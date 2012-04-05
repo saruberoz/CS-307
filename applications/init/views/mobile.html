@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
+<link rel="icon" 
+      type="image/png" 
+      href="{{=URL('static', 'favicon.png')}}" />
+<title>{{if title != "":}}{{=title+" - "}}{{pass}}Recipedia - A recipe storage &amp; sharing app</title>
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic|Rokkitt:700' rel='stylesheet' type='text/css'>
+<link href="{{=URL('static', 'css/mobile.css')}}" rel="stylesheet" type="text/css" />
+    {{include 'web2py_ajax.html'}}
+</head>
+
+<body>
+	<div id="top_nav">
+		<div class="leftButton">
+			<a href="javascript:history.go(-1)"><img src="{{=URL('static', 'images/m_back.png')}}" width='30' height='30'></a>
+		</div>
+		<div class="centerTitle">{{if title != "":}}{{=title}}{{else:}}Recipedia{{pass}}</div>
+		<div class="rightButton">
+			<a href="{{=URL('mobile','index')}}" ><img src="{{=URL('static', 'images/m_home.png')}}" width='30' height='30'></a>
+		</div>
+    </div>
+    <div id="page_container">
+        <div id="content">
+            {{include}}
+        </div>
+        <div id="footer">
+        Created by Programmers Annonymous, Fall 2011.<br />
+        CS 307 - Software Engineering, Purdue University.
+        </div>
+    </div>
+</body>
+</html>

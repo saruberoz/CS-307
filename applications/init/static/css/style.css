@@ -1,0 +1,503 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+    margin:0;
+    padding:0;
+    background:#ccc url(../images/bg.png) repeat;
+    font-family: 'Lato', Arial, sans-serif;
+    font-weight:400;
+    font-size:13px;
+}
+
+input { font-family: 'Lato', Arial, sans-serif; font-size:18px;}
+input[type=submit] { background-color:#1c1d96; color:#fff; font-size:14px; }
+label { font-size:14px; }
+
+h1 {
+    font-family:'Rokkitt', Arial, serif;
+    font-size:32px;
+    color:#1c1d96;
+    font-weight:normal;
+    margin:0;
+    padding:0;
+}
+
+h2 {
+    font-family:'Rokkitt', Arial, serif;
+    font-size:26px;
+    color:#1c1d96;
+    font-weight:normal;
+    margin:0;
+    padding:0;
+}
+
+h3 {
+    font-family:'Rokkitt', Arial, serif;
+    font-size:24px;
+    color:#1c1d96;
+    font-weight:normal;
+    margin:0;
+    padding:0;
+}
+
+h4 {
+    font-size:10px;
+    color:#666;
+    font-weight:normal;
+    text-transform:uppercase;
+    margin:0;
+    padding:0;
+}
+
+p {
+    font-size:13px;
+    margin:0;
+    padding:5px 0;
+}
+
+a, a:visited {
+    color:#1c1d96;
+    font-size:13px;
+}
+
+a:hover, a:active {
+    color:#333;
+    font-size:13px;
+}
+
+#page_container {
+    width:800px;
+    margin:0 auto;
+}
+
+#header {
+    padding-top:20px;
+    height:60px;
+    clear: both;
+}
+
+#top_nav {
+    float:right;
+    font-family:'Rokkitt', Arial, serif;
+    font-size:20px;
+    color:#fff;
+}
+
+/* kh - make links formatted similarly as normal text for the navigation */
+#top_nav a, #top_nav a:visited {
+    font-family: 'Rokkitt', Arial, serif;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#top_nav a:hover, #top_nav a:active {
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+#top_nav ul {
+    /* kh - added padding-left attribute */
+    list-style-type:none;
+    display:block;
+    padding-left: 0px;
+}
+
+#top_nav ul li {
+    display:inline;
+    padding:0 8px;
+}
+
+#content {
+    background-color:#fff;
+    padding:10px;
+    min-height:500px;
+    clear:both;
+    -moz-box-shadow: 0px 0px 15px #333;
+    -webkit-box-shadow: 0px 0px 15px #333;
+    box-shadow: 0px 0px 15px #333;
+}
+
+#login_nav {
+    /* KH - commented out position, left, and width attributes */
+    float:right;
+    top:0;
+    text-align:right;
+    background-color:#000;
+    opacity:0.8;
+    filter:alpha(opacity=80); /* For IE8 and earlier */
+    -moz-border-radius: 0px 0px 10px 10px;
+    border-radius:  0px 0px 10px 10px;
+    padding:5px 15px;
+    color:#fff;
+}
+
+/* Kevin H: login section should be white, or something that stands out on black */
+
+.auth_navbar a, .auth_navbar a:visited{
+    color: #FFFFFF;
+    font-size: 1em;
+    text-decoration: underline;
+}
+
+.auth_navbar a:hover, .auth_navbar a:active{
+    color: #FFFFFF;
+    text-decoration: underline;
+    font-size:1em;
+}
+
+#login_container {
+    margin:20px auto;
+    width:650px;
+}
+
+#login {
+    padding:20px;
+    background-color:#d2d2d2;
+}
+
+#login_new {
+    float:right;
+    border-left:1px dotted #000;
+    width:315px;
+    padding-left:20px;
+}
+
+#login_return {
+    width:215px;
+    float:left;
+}
+
+#login_return a {
+    color:#1c1d96;
+    font-size:12px;
+}
+#login_return a:hover {
+    color:#333;
+    font-size:12px;
+}
+
+#login_return input {
+    width: 176px;
+}
+
+#find_head { 
+    font-family:'Rokkitt', Arial, serif;
+    font-size:26px;
+    color:#1c1d96;
+    font-weight:normal;
+    margin-bottom:10px;
+    padding:2px;
+    height:30px;
+    border-bottom:1px solid #000;
+}
+
+#left_nav {
+    float: left;
+    width:200px;
+    padding:5px;
+}
+
+#left_nav ul {
+    list-style-type:none;
+    display:block;
+    padding:0;
+    margin:0;
+}
+
+#left_nav ul li a {
+    font-family: 'Lato',Arial,sans-serif;
+    color: #000000;
+    text-decoration: none;
+    font-size: 1.1em;
+    display:block;
+    padding:8px;
+    border-bottom:1px #666 dotted;
+    width:100%;
+    margin:0;
+}
+
+#left_nav ul li a:hover, #left_nav .active {
+    background-color: #DDDDDD;
+}
+
+#left_nav ul li ul {
+    list-style-type:disc;
+    padding:5px 5px 5px 30px;
+    border-bottom:1px #666 dotted;
+    width: 180px;
+}
+
+#left_nav ul li ul li a {
+    padding:1px;
+    border-bottom:0;
+}
+
+#left_nav ul li ul li a:hover {
+    background-color: #fff;
+    text-decoration: underline;
+}
+
+#right_nav {
+    width:200px;
+    padding:10px;
+    float:right;
+}
+
+#right_nav ul {
+    list-style-type:none;
+    display:block;
+    padding:0;
+    margin:0;
+}
+
+#right_nav ul li {
+    margin:0;
+    padding:4px;
+    border-bottom:1px #666 dotted;
+    width:100%;
+}
+
+/* kh - format links for list */
+#right_nav ul li a {
+    font-family: 'Lato',Arial,sans-serif;
+    font-size: 13px;
+    color: #000000;
+    text-decoration: none;
+}
+
+#top_right_nav {
+    float:right;
+    padding-right:10px;
+    width:auto;
+    text-align:right;
+    width:500px;
+}
+
+#top_right_nav ul {
+    list-style-type:none;
+    display:block;
+    padding-left: 0px;
+    margin:0;
+}
+
+#top_right_nav ul li {
+    display:inline;
+    padding: 0 5px;
+}
+
+#top_right_nav ul li a {
+    font-family: 'Lato',Arial,sans-serif;
+    font-size: 13px;
+    color: #000000;
+    text-decoration: underline;
+}
+
+#results {
+    width:530px;
+    border-left: #666 1px solid;
+    min-height:300px;
+    float:right;
+    padding:10px;
+}
+
+#results table {
+    width: 100%;
+}
+
+#results td {
+    padding:10px 0;
+    border-bottom: 1px dotted #000000;
+}
+
+#results h3 a, #results h3 a:visited {
+    text-transform: capitalize;
+    font-size:24px;
+}
+
+#results h3 a:hover, #results h3 a:active {
+    text-transform: capitalize;
+    text-decoration: underline;
+    font-size:24px;
+}
+
+#results input#quantity {
+    width: 20px;
+    font-size: 1em;
+}
+
+
+#results_count { font-size:12px; }
+#results_count td { 
+    padding:0;
+    border-bottom: none;
+    width:530px;
+}
+
+#error {
+    text-align:center;
+    margin:15px;
+}
+
+#error a {
+    font-family: 'Lato',Arial,sans-serif;
+    font-size: 13px;
+    color: #000000;
+    text-decoration: underline;
+}
+
+.browse_title { font-size:13px; font-weight:bold; }
+
+#recipe { float:left; width:500px; }
+#ingredients { list-style-type:none; }
+#ingredients li { padding: 2px 0; }
+
+#footer {
+    margin-top:5px;
+    margin-bottom: 10px;
+    font-size:12px;
+    color:#fff;
+    text-align:center;
+}
+
+.clear { clear:both; }
+.right { text-align:right; }
+.center { text-align:center; }
+.serif { font-family:'Rokkitt', Arial, serif; font-size:24px; color:#1c1d96;}
+.side-box { border-bottom:1px #666 dotted; padding:5px 0; margin:15px 0; width:100%;}
+.side-box a {font-size: 14px !important; }
+.side-box a:hover {font-size: 14px !important; }
+.details {  font-size:13px; color:#000; font-weight:normal; }
+
+/* kh - fix for sidebar, not sure if classes break the dom thing or whatever, but this works for now */
+/* why are links in this section styled the same as ones in the auth_navbar class? */
+.side-box a, a:visited {
+    color:#1c1d96;
+    font-size:12px;
+}
+.side-box a:hover, a:active {
+    color:#333;
+    font-size:12px;
+}
+
+
+#search_button {
+    cursor: pointer;
+}
+
+.comments { /* entire comments section */
+    padding-top: 25px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.comment { /* actual comment itself */
+    background: #C8C8C8;
+    margin:2px;
+    padding: 3px 5px 3px 5px;
+}
+
+.comment:hover {
+    background: #D8D8D8;
+}
+
+.comment h1 { /* comments header */
+    background: #EEEEEE;
+    color: #000000;
+}
+.comment h2 { /* username/title of comment */
+    font-size:16px;
+    color: #1C1D96;
+    font-family: 'Lato',Arial,sans-serif;
+    font-weight: bold;
+    
+}
+
+.comment p { /* formatting for the comment */
+    padding: 0;
+    margin-left: 15px;
+}
+
+.comments textarea {
+    height: 64px;
+    width: 300px;
+    resize: none;
+
+}
+
+/* kh - collections list on shopping list page */
+
+table#recipes {
+    width: 100%;
+}
+
+#recipes td {
+    border-bottom: 1px dotted #666666;
+    width: 100%;
+    font-family: 'Lato',Arial,sans-serif;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 8px;
+    text-decoration: none;
+    width: 100%;
+    clear: both;
+    float: left;
+}
+
+#recipes td:hover {
+    background: #dddddd;
+}
+
+#recipes td .delete_x {
+    float: right;
+}
+
+#rec_img  {
+    float: right;
+}
+
+.delete_x {
+    list-style-type:none;
+}
+
+.delete_x a {
+    display:block;
+    height:16px;
+    width:16px;
+    float:right;
+    background:url(../images/x.jpg);
+}
+.delete_x_ing a {
+    display:block;
+    height:16px;
+    width:16px;
+    background:url(../images/x.jpg);
+}
+
+.delete_x_ing {
+    float:right;
+    padding:5px;
+    height:16px;
+    width:16px;
+}
+
+.delete_x a:hover, .delete_x_ing a:hover {
+	background:url(../images/x_hover.jpg);
+}
+
+.clonedInput {
+	width:350px;
+}
+
+.integer, .double {
+	width:50px !important;
+}
+
+#add_recipe_table tr {
+	vertical-align:top;
+}
+
+.details_label {
+	font-size:10px; color:#666; font-weight:normal; text-transform:uppercase;
+}

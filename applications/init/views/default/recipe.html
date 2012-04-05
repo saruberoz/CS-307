@@ -1,0 +1,101 @@
+{{title = recipe.name}}
+{{extend 'layout.html'}}
+<script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'83445927-0fa3-4839-b0e1-8e4bef054044'});</script>
+{{from markmin2html import markmin2html}}
+<div id="find_head">
+                {{=recipe.name}}
+            </div>
+            <div id="recipe">
+            	Ingredients:
+            	<ul>
+            		{{for ingredient in ingredients:}}
+                    	<li>{{="%.2f" % float(ingredient.quantity)}} {{=ingredient.unit}} {{=ingredient.ingredient.name}}</li>
+                    {{pass}}
+            	</ul>
+                Old Ingredients:
+                {{=XML(markmin2html(recipe.ingredients))}}
+                <br />
+                <br />
+                Directions:
+                {{=XML(markmin2html(recipe.directions))}}
+            </div>
+            <div id="right_nav">
+                {{if recipe.image: }}
+                <img width="200px" src="{{=URL('download', args=[recipe.image])}}" />
+                {{pass}}
+                {{if recipe.video: }}
+                <br>
+                <br>
+                <iframe width="200" height="150" src="http://www.youtube.com/embed/{{=recipe.video}} " frameborder="0" allowfullscreen></iframe> 
+                {{pass}}
+                <div class="side-box">
+                    {{for x in range(0,5):}}
+                        <a href="{{=URL('default','rating',vars=dict(value=(x+1),recipe=recipe.id,auth=auth.user_id))}}" style="text-decoration:none;">
+                        {{if recipe.rating == None or recipe.rating == 0:}}
+                            <img src="{{=URL('static', 'images/star-empty.png')}}" width="20" height="20" />
+                        {{elif recipe.rating.value > (x+1.5):}}
+                            <img src="{{=URL('static', 'images/star.png')}}" width="20" height="20" />
+                        {{elif recipe.rating.value >= (x+1):}}
+                            <img src="{{=URL('static', 'images/star-half.png')}}" width="20" height="20" />
+                        {{else:}}
+                            <img src="{{=URL('static', 'images/star-empty.png')}}" width="20" height="20" />
+                        {{pass}}
+                        </a>
+	                    {{pass}}
+                    <br /><br />
+                    <span class="details">
+                    <span class="details_label">By:</span>&nbsp; {{=user.username}}<br />
+                    {{if recipe.cook_time > 0:}}<span class="details_label">Cook Time:</span>&nbsp; {{=recipe.cook_time}} <span class="details_label">minutes</span><br />{{pass}}
+                    {{if recipe.prep_time > 0:}}<span class="details_label">Prep Time:</span>&nbsp; {{=recipe.prep_time}} <span class="details_label">minutes</span><br />{{pass}}
+                    <span class="details_label">Added:</span>&nbsp; {{=recipe.created_on.strftime('%b %d, %Y %l:%M%p')}}<br />
+                    <span class="details_label">Category:</span>&nbsp; {{=db.category(id=recipe.category).name}}
+                    </span>
+                </div>
+                <ul>
+                    {{if (auth.user_id == user.id):}}
+                    <li><a href="{{=URL('default','edit_recipe',args=[recipe.id])}}" >Edit Recipe</a></li>
+                    {{pass}}
+                    
+                    {{if (auth.user_id > 0):}}
+                    <li>Add to 
+                        <select name='collection' onChange="navigateTo(this)">
+                            <option value="">-- Choose a Collection --</option>
+                            {{for collection in collections:}}
+                            <option value="{{=collection.id}}">{{=collection.name}}</option>
+                            {{pass}}
+                        </select>
+                    </li>
+                    <script>
+                        function navigateTo(sel) {
+                            var url = '{{=URL('default', 'add_to_collection')}}/{{=recipe.id}}/'
+                            var id = sel.options[sel.selectedIndex].value;
+                            location.href = url + id;
+                        }
+                    </script>
+                    {{pass}}
+                    
+                    <li><a href="javascript: window.print() ">Print Recipe</a></li>
+                    <li><span  class='st_sharethis' displayText='ShareThis'></span></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+           
+       {{ if len(comments) > 0: }}
+           <div class="comments">
+           <h1>Comments:</h1>
+           {{for c in comments:}}
+               <div class="comment">
+                   <h2> {{=c.user.username}} says:</h2>
+                   <p>{{=c.content}}</p>
+               </div>
+           {{pass}}
+            <br />
+            {{=form}}
+            </div>
+        {{else:}}
+            <div class="comments">
+            <h1>No Comments</h1>
+            <br />
+            {{=form}}
+            </div>
+        {{pass}}

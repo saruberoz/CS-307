@@ -1,0 +1,17 @@
+{{title = ""}}
+{{extend 'layout.html'}}
+
+<div id="login_container">
+                <h1>Log In</h1>
+                <div id="login">
+                    <div id="login_return">
+                        <h2>Returning Users</h2><br />
+                        {{=auth.login()}}
+                    </div>
+                    <div id="login_new">
+                        <h2>Create an Account</h2>
+                        {{=auth.register()}}
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>

@@ -1,0 +1,389 @@
+/* Wilson S: layout for mobile, added some stuff from original web layout */
+
+/* @body */
+body {
+    background:#ccc url(../images/bg.png) repeat;
+    font-family: 'Lato', Arial, sans-serif;
+    font-weight:400;
+    font-size:13px;
+    margin: 0;              /* Amount of negative space around the outside of the body */
+    padding: 0;             /* Amount of negative space around the inside of the body */
+}
+/* @end */
+
+input[type=submit] { background-color:#1c1d96; color:#fff; font-size:14px; }
+label { font-size:14px; }
+
+/* @header */
+h1 {
+    font-family:'Rokkitt', Arial, serif;
+    font-size:32px;
+    color:#1c1d96;
+    font-weight:normal;
+    margin:0;
+    padding:0;
+}
+
+h2 {
+    font-family:'Rokkitt', Arial, serif;
+    font-size:26px;
+    color:#1c1d96;
+    font-weight:normal;
+    margin:0;
+    padding:0;
+}
+
+h3 {
+    font-family:'Rokkitt', Arial, serif;
+    font-size:24px;
+    color:#1c1d96;
+    font-weight:normal;
+    margin:0;
+    padding:0;
+}
+
+h4 {
+    font-size:10px;
+    color:#666;
+    font-weight:normal;
+    text-transform:uppercase;
+    margin:0;
+    padding:0;
+}
+/* @end */
+/* @paragraph */
+p {
+    font-size:13px;
+    margin:0;
+    padding:5px 0;
+}
+
+a, a:visited {
+    color:#1c1d96;
+    font-size:13px;
+}
+
+a:hover, a:active {
+    color:#333;
+    font-size:13px;
+}
+
+#page_container {
+    width:95%;
+    margin:60px auto 0 auto;
+}
+
+#header {
+    padding-top:20px;
+    height:60px;
+    clear: both;
+}
+
+#top_nav {
+    font-family:'Rokkitt', Arial, serif;
+    color:#fff;
+    background: url(../images/m_topbar.jpg) repeat-x;
+    height:50px;
+    padding:3px 5px;
+    margin:0;
+    position:fixed;
+    width:100%;
+    top:0;
+}
+
+#top_nav a, #top_nav a:visited {
+    height:30px;
+    width:30px;
+}
+
+#top_nav div.leftButton {
+	position:absolute;
+    top: 7px;
+    left: 2%;
+    height: 27px;
+    width:22px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 0px #000;
+    padding-top:3px;
+    display:block;
+}
+
+#top_nav div.leftButton a, #top_nav div.rightButton a {
+	display:block;
+	width:30px;
+	height:30px;
+}
+
+#top_nav div.centerTitle {
+	text-align:center;
+	margin:7px auto;
+	font-size:30px;
+	text-shadow: 2px 2px 0px #000;
+}
+
+#top_nav div.rightButton {
+	position:absolute;
+    top: 7px;
+	right: 8%;
+    height: 30px;
+    width:22px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 0px #000;
+    display:block;
+}
+
+#content {
+    background-color:#fff;
+    padding:1%;
+    clear:both;
+}
+/* @group top_cont */
+#top_cont a
+{    
+    text-shadow: 0px 1px 0px #fff;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#999));
+}
+#top_cont ul
+{
+    list-style: none;
+    margin: 10px;
+    padding: 0;
+}
+#top_cont ul li a
+{
+    background-color: #FFFFFF;
+    border: 1px solid #999999;
+    color: #222222;
+    display: block;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: -1px;
+    padding: 12px 10px;
+    text-decoration: none;
+}
+#top_cont ul li:first-child a
+{
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+}
+#top_cont ul li:last-child a
+{
+    -webkit-border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+}
+/* @end */
+/* @group bot_cont -> Individual */
+#bot_cont {
+	text-align:center;
+}
+#bot_cont ul.individual {
+    border: 0;
+    background: none;
+    clear: both;
+    overflow: hidden;
+    padding:0;
+    margin:10px;
+    -webkit-box-shadow: none;
+}
+#bot_cont ul.individual li {
+    background: #4c4d4e;
+    border: 1px solid #333;
+    font-size: 17px;
+    font-weight: bold;
+    text-shadow: 0px 1px 0px #fff;
+    text-align: center;
+    -webkit-border-radius: 8px;
+    -webkit-box-sizing: border-box;
+    width: 48%;
+    display: block;
+    -webkit-box-shadow: rgba(0,0,0,.2) 1px 1px 3px;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
+}
+
+#bot_cont ul.individual li a {
+    color: #fff;
+    text-decoration:none;
+    font-size:17px;
+    -webkit-border-radius: 8px;
+    display:block;
+    padding: 11px 0px 14px 10px;
+}
+
+.auth_navbar, .auth_navbar a {
+	font-size:20px;
+}
+
+.left { float:left; text-align:left; }
+.right { float:right; text-align:right; }
+/* @end */
+/* @footer */
+#footer {
+    margin-top:5px;
+    font-size:12px;
+    color:#fff;
+    text-align:center;
+}
+/* @end */
+
+.integer {
+	width:50px !important;
+}
+
+.browse_title {
+	font-weight:bold;
+}
+
+#error {
+    text-align:center;
+    margin:15px;
+}
+
+#results h3 a {
+	font-size:20px;
+}
+
+.side-box, .side-box a {
+	font-size:20px;
+	margin:5px;
+}
+
+#find_head {
+	font-family:'Rokkitt', Arial, serif;
+    font-size:22px;
+    color:#1c1d96;
+    font-weight:normal;
+    margin:5px;
+    padding:2px;
+    border-bottom:1px solid #ccc;
+}
+
+#recipe_menu {
+	margin: 0 auto;
+	width:85%;
+}
+
+#recipe_menu ul {
+	margin:0;
+	padding:0;
+	list-style-type: none;
+}
+
+#recipe_menu ul li {
+	margin:0;
+    padding:8px;
+    border-bottom:1px #666 solid;
+    width:100%;
+    font-family: 'Lato',Arial,sans-serif;
+    font-size: 17px;
+    color: #000000;
+}
+
+#recipe_menu ul li a {
+    font-family: 'Lato',Arial,sans-serif;
+    font-size: 17px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.details {
+	width:60%;
+	background-color:#eee;
+	margin:5px auto;
+	padding:5px;
+}
+
+.delete_x {
+	list-style-type:none;
+}
+
+.delete_x a {
+	display:block;
+	height:16px;
+	width:16px;
+	float:right;
+	background:url(../images/x.jpg);
+}
+.delete_x_ing a {
+	display:block;
+	height:16px;
+	width:16px;
+	background:url(../images/x.jpg);
+}
+
+.delete_x_ing {
+	float:right;
+	padding:5px;
+	height:16px;
+	width:16px;
+}
+
+.delete_x a:hover, .delete_x_ing a:hover {
+	background:url(../images/x_hover.jpg);
+}
+
+.clonedInput {
+	width:100%;
+}
+
+#recipe_directions {
+	width:98%;
+}
+
+.integer, .double {
+	width:8% !important;
+}
+
+#add_recipe_table tr {
+	vertical-align:top;
+}
+
+.details_label {
+	font-size:10px; color:#666; font-weight:normal; text-transform:uppercase;
+}
+
+#rating {
+	margin:0 auto;
+	width:60%;
+}
+
+#rating a {
+	text-decoration:none;
+}
+
+.comments { /* entire comments section */
+    padding-top: 25px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.comment { /* actual comment itself */
+    background: #C8C8C8;
+    margin:2px;
+    padding: 3px 5px 3px 5px;
+}
+
+.comment h1 { /* comments header */
+    background: #EEEEEE;
+    color: #000000;
+}
+.comment h2 { /* username/title of comment */
+    font-size:16px;
+    color: #1C1D96;
+    font-family: 'Lato',Arial,sans-serif;
+    font-weight: bold;
+    
+}
+
+.comment p { /* formatting for the comment */
+    padding: 0;
+    margin-left: 10%;
+}
+
+.comments textarea {
+    height: 64px;
+    width: 80%;
+    resize: none;
+}
+

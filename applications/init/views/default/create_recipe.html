@@ -1,0 +1,160 @@
+{{title = "Add a Recipe"}}
+{{extend 'layout.html'}}
+
+<div id="find_head">Add a Recipe</div>
+
+{{=form.custom.begin}}
+	<table id='add_recipe_table'>
+		<tr id="recipe_name__row">
+			<td class="w2p_fl" style="width:100px;">
+				<label for="recipe_name" id="recipe_name__label">Name: </label>
+			</td>
+			<td class="w2p_fw">
+				{{=form.custom.widget.name}}
+			</td>
+			<td class="w2p_fc"></td>
+		</tr>
+		<tr id="recipe_cook_time__row">
+			<td class="w2p_fl">
+				<label for="recipe_cook_time" id="recipe_cook_time__label">Cook Time: </label>
+			</td>
+			<td class="w2p_fw">
+				{{=form.custom.widget.cook_time}} minutes
+			</td>
+			<td class="w2p_fc"></td>
+		</tr>
+		<tr id="recipe_prep_time__row">
+			<td class="w2p_fl"><label for="recipe_prep_time" id="recipe_prep_time__label">Prep Time: </label></td>
+			<td class="w2p_fw">{{=form.custom.widget.prep_time}} minutes</td>
+			<td class="w2p_fc"></td>
+		</tr>
+		<tr id="recipe_ingredients__row">
+			<td class="w2p_fl"><label for="recipe_ingredients" id="recipe_ingredients__label">Ingredients: </label></td>
+			<td class="w2p_fw">
+				<div class='clonedInput' id='ingredient1'>
+					<input class="double 50px" id="ing_quantity" name="quantity1" type="text" value="" />
+					<select class="reference" id="ing_uom" name="uom1">
+						<option value=""></option>
+						<option value="cup">cup</option>
+						<option value="pint">pint</option>
+						<option value="quart">quart</option>
+						<option value="gallon">gallon</option>
+						<option value="tsp">tsp</option>
+						<option value="tbsp">tbsp</option>
+						<option value="oz">oz</option>
+						<option value="mL">mL</option>
+						<option value="L">L</option>
+						<option value="g">g</option>
+						<option value="kg">kg</option>
+						<option value="lb">lb</option>
+						<option value="ct">ct</option>
+						<option value="pinch">pinch</option>
+						<option value="dash">dash</option>
+					</select>	
+					<input class="string" id="ing_name" name="ing_name1" type="text" value="" />
+					<div class="delete_x_ing"><a name='x' id='ing_delete1'></a></div>
+					<input id="ing_id" name="ing_id1" type="hidden" value="" /><br/>
+				</div>
+				<a id='add_ing' href="#">Add an ingredient</a><br/><br/>
+			</td>
+			<td class="w2p_fc"></td>
+		</tr>
+		<tr id="recipe_directions__row">
+			<td class="w2p_fl"><label for="recipe_directions" id="recipe_directions__label">Directions: </label><br/><span style="font-size:10px;">To form an ordered list of directions, begin each new line with plus (+) symbol followed by a space.</span></td>
+			<td class="w2p_fw">{{=form.custom.widget.directions}}</td>
+			<td class="w2p_fc"></td>
+		</tr>
+		<tr id="recipe_category__row">
+			<td class="w2p_fl"><label for="recipe_category" id="recipe_category__label">Category: </label></td>
+			<td class="w2p_fw">{{=form.custom.widget.category}}</td>
+			<td class="w2p_fc"></td>
+		</tr>
+		<tr id="recipe_image__row">
+			<td class="w2p_fl"><label for="recipe_image" id="recipe_image__label">Image: </label></td>
+			<td class="w2p_fw">{{=form.custom.widget.image}}</td>
+			<td class="w2p_fc"></td>
+		</tr>
+		<tr id="recipe_image__row">
+			<td class="w2p_fl"><label for="recipe_image" id="recipe_image__label">Video: </label></td>
+			<td class="w2p_fw">http://www.youtube.com/watch?v={{=form.custom.widget.video}}</td>
+			<td class="w2p_fc"></td>
+		</tr>
+		<tr id="recipe_private__row">
+			<td class="w2p_fl"><label for="recipe_private" id="recipe_private__label">Private?: </label></td>
+			<td class="w2p_fw">{{=form.custom.widget.private}}</td>
+			<td class="w2p_fc"></td>
+		</tr>
+		<tr id="submit_record__row">
+			<td class="w2p_fl"></td>
+			<td class="w2p_fw"><input type="submit" value="Submit" /></td>
+		</tr>
+		<input id="numIngredients" name="ing_count" type="hidden" value="1" />
+	</table>
+	{{=form.custom.end}}
+	
+	<script type='text/javascript'>
+		$(document).ready(function() {
+			$('#ing_delete1').click(function() { removeIng($(this).attr('id')); });
+            $('#add_ing').click(function() {
+                var num     = $('.clonedInput').length; // how many "duplicatable" input fields we currently have
+                var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
+				
+                // create the new element via clone(), and manipulate it's ID using newNum value
+                var newElem = $('#ingredient' + num).clone().attr('id', 'ingredient' + newNum);
+ 
+                // manipulate the name/id values of the input inside the new element
+                newElem.children(':eq(0)').attr('class', 'double 50px').attr('name', 'quantity' + newNum).val("");
+				newElem.children(':eq(1)').attr('class', 'reference').attr('name', 'uom' + newNum).val("");
+				newElem.children(':eq(2)').attr('class', 'string').attr('name', 'ing_name' + newNum).val("");
+				newElem.children(':eq(3)').attr('id', 'ing_delete'+newNum).click(function() { removeIng($(this).attr('id')); });
+				newElem.children(':eq(4)').attr('name', 'ing_id'+newNum);
+			
+                // insert the new element after the last "duplicatable" input field
+                $('#ingredient' + num).after(newElem);
+ 
+                // enable the "remove" button
+                //$('#btnDel').attr('disabled','');
+				
+				// update input count
+				$('#numIngredients').val(newNum);
+            });
+ 
+ 
+            //$('#btnDel').attr('disabled','disabled');
+			//$('#delete1').click(function() { removeTime($(this).attr('id')); });	//activate initial delete button
+			//$('.delete').click(function() { removeTime($(this).attr('id')); });  	//add delete functionality to all php added entries
+});
+
+function removeIng(id) {
+	var tot = $('.clonedInput').length;
+	var num = new Number(id.substring(10));
+	if(tot == 1) { alert("At least one ingredient is required to add a recipe."); return; }
+	
+	if($('#ingredient'+num).children(':eq(2)').val() != "") {
+		if(confirm("Are you sure you want to remove this ingredient?")) {
+			//$(this).load('/vic/access/tools/schedule/deleteTime.php', "id="+$('#input'+num).children().children(':eq(4)').val());
+		} else {
+			return;
+		}
+	}
+	
+	$('#ingredient' + num).remove();     // remove the last element
+	
+	//decrease the total
+	tot = tot - 1;
+	var i = 1;
+	$('.clonedInput').each(function() {
+		console.log($(this).children());
+		$(this).attr('id','ingredient'+i);
+		$(this).children(':eq(0)').attr('name', 'quantity' + i);
+		$(this).children(':eq(1)').attr('name', 'uom' + i);
+		$(this).children(':eq(2)').attr('name', 'ing_name' + i);
+		$(this).children(':eq(3)').attr('id', 'ing_delete'+i);
+		$(this).children(':eq(4)').attr('name', 'ing_id'+i);
+		i = i+1;
+	});
+	
+	// update input count
+	$('#numIngredients').val(tot);
+}
+	</script>

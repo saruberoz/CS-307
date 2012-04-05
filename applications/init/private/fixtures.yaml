@@ -1,0 +1,5 @@
+auth_user:
+    - first_name: Kevin
+      last_name: Schenk
+      email: schenkkp@gmail.com
+      password: kevpat

@@ -1,0 +1,18 @@
+{{title = ""}}
+{{extend 'mobile.html'}}
+<div id="top_cont">
+    <ul>
+        <li><a href="{{=URL('mobile','search')}}" > Find Recipes </a></li>
+        <li><a href="{{=URL('mobile','create_recipe')}}"> Add A Recipe </a></li>
+        <li><a href="{{=URL('mobile','collection')}}"> My Collections </a></li>
+        <li><a href="{{=URL('mobile','shopping_list')}}"> Shopping List </a></li>
+    </ul>
+</div>
+
+<div id="bot_cont">
+    <!--<ul class="individual">
+        <li class="left"><a href="{{=URL('mobile','login')}}" >Login</a></li>
+        <li class="right"><a href="{{=URL('mobile','create')}}" >Register</a></li>
+    </ul>-->
+    {{try:}}{{=auth.navbar( prefix="Welcome, ",action=URL('mobile','user'))}}{{except:pass}}
+</div>

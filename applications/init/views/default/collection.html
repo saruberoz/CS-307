@@ -1,0 +1,58 @@
+{{  import urllib
+    def trimDirections(string):
+        s = string.split('+')
+        t = ""
+        t = t.join(s)
+        return t[:250]+"..."
+    
+    def c_count(id):
+    	return db((db.collection_recipes.collection==id)).count()
+}}
+{{title = "My Collection"}}
+{{extend 'layout.html'}}
+
+<div id="find_head">
+                My Collections
+                <div id="top_right_nav">
+                    <form method="get" action="{{=URL('default','collection')}}">
+                        <input id="search_field" name="name" type="text" value="" style="width:200px; font-size:16px;" />
+                        <input type="hidden" name="redirURL" value="collection" />
+                        <input id="search_button" type="submit" value="Create Collection" />
+                    </form>
+                </div>  
+            </div>
+            {{if len(collections) != 0 :}}
+            <div id="results">
+                {{if len(recipes) == 0 :}}
+                <table>
+                	<tr><td><div id="error"><h3>No recipes found.</h3></div></td></tr>
+                	<tr><td class="center"><a href="{{=URL('default', 'collection', vars=dict(d=1,c_id=id))}}">Delete this Collection</a></td></tr>
+                </table>
+                {{else: }}
+                <table>
+                   {{for i,recipe in enumerate(recipes):}}
+                    <tr>
+                        <td>
+                        	<li class='delete_x'><a href="{{=URL('default', 'collection', vars=dict(d=1,r_id=recipe.id, c_id=id))}}"></a></li>
+                            <h3><a href="{{=URL('default','recipe',args=[recipe.id])}}">{{=recipe.name}}</a></h3>
+                            <h4>{{=db.category(id=recipe.category).name}} | By: {{=db.auth_user(id=recipe.user).username}} | Added: {{=recipe.created_on.strftime('%b %d, %Y %I:%M%p')}}</h4>
+                            <p>{{=trimDirections(recipe.directions)}}</p>
+                        </td>
+                    </tr>
+                    {{pass}}
+                    <tr><td class="center"><a href="{{=URL('default', 'collection', vars=dict(d=1,c_id=id))}}">Delete this Collection</a> | <a href="{{=URL('default', 'collection', vars=dict(a=1,c_id=id))}}">Add to Shopping List</a></td></tr>
+                </table>
+                {{=prev}}{{=next}}
+                {{pass}}
+            </div>
+            <div id="left_nav">
+                <ul>
+                    {{for i,collection in enumerate(collections):}}
+                      <li><a href="{{=URL('default','collection',args=[collection.id])}}" {{if id == collection.id:}}class="active"{{pass}}>{{=collection.name}} ({{=c_count(collection.id)}})</a></li>
+                    {{pass}}
+                </ul>
+            </div>
+            {{else:}}
+                <div id="error"><h3>No collections found.</h3></div>
+            {{pass}}
+            <div class="clear"></div>

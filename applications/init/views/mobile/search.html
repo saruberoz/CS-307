@@ -1,0 +1,76 @@
+{{  import urllib
+    def trimDirections(string):
+        s = string.split('+')
+        t = ""
+        t = t.join(s)
+        return t[:150]+"..."
+}}
+{{title = "Find Recipes"}}
+{{extend 'mobile.html'}}
+
+	        <center><form method="get" action="{{=URL('mobile','search')}}">
+	            <input type="text" id="search_field" name="q"  value="" style="width:75%; font-size:16px;" /> 
+	            <input id="search_button" type="submit" value="Search" />
+	        </form></center>
+	        <hr />
+            <div id="results">
+                <div id="results_count">
+                    <table width="100%">
+                        <tr>
+                            <td class='left'>
+                                <span class='browse_title'>{{=browse_title}}</span>
+                            </td>
+                            <td class='right'>Showing 
+                                {{if tot_count == 0 :}}
+                                0 results.
+                                {{else:}}
+                                {{=(page * results) + 1}}
+                                
+                            -
+                            {{if ((page * results) + results) > tot_count: }}
+                                {{=tot_count}}
+                            {{else: }}
+                                {{=((page * results) + results)}}
+                            {{pass}}
+                             of {{=tot_count}} results.
+                             {{pass}}
+                             </td>
+                          </tr>
+                     </table>
+                </div>
+                {{if len(recipes) == 0 :}}
+                <div id="error"><h3>No results found.</h3></div>
+                {{else: }}
+                <table>
+                   {{for i,recipe in enumerate(recipes):}}
+                   {{if i==results: break}}
+                    <tr>
+                        <td>
+                            {{if recipe.image:}}
+                            <div id="rec_img">
+                                <img width="60px" src="{{=URL('download', args=[recipe.image])}}" />
+                            </div>
+                            {{pass}}
+                            <h3><a href="{{=URL('mobile','recipe',args=[recipe.id])}}">{{=recipe.name}}</a></h3>
+                            <h4>{{=db.category(id=recipe.category).name}} | By: {{=db.auth_user(id=recipe.user).username}} | Added: {{=recipe.created_on.strftime('%b %d, %Y %I:%M%p')}}</h4>
+                            <p>{{=trimDirections(recipe.directions)}}</p>
+                        </td>
+                    </tr>
+                    {{pass}}
+                </table>
+                <center>{{=prev}} {{=next}}</center>
+                {{pass}}
+            </div>
+            <div id="top_cont">
+                <ul>
+                    <li><a href="{{=URL('mobile','search',args=["recent"])}}" {{if type=="recent":}}class="active"{{pass}}>Most Recent</a></li>
+                    {{for category in db(db.category).select(db.category.name, db.category.url_str): }}
+                    <li><a href="{{=URL('mobile','search',args=["category",category.url_str])}}">Category: {{=category.name}}</a></li>
+                    {{pass}}
+                    </li>
+                    <li><a href="{{=URL('mobile','search',args=["cook_time"])}}" {{if type=="cook_time":}}class="active"{{pass}}>Cook Time</a></li>
+                    <li><a href="{{=URL('mobile','search',args=["prep_time"])}}" {{if type=="prep_time":}}class="active"{{pass}}>Prep Time</a></li>
+                </ul>
+            </div>
+            <div class="side-box"><span class="serif">Can't find what you're looking for?</span> <a href="{{=URL('mobile','create_recipe')}}">Add your own recipe.</a></div>
+            <div class="clear"></div>
